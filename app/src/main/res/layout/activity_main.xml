@@ -3,9 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.literallyjosh.mtg_counter.MainActivity"
+    android:background="#000000"
     android:orientation="vertical">
 
     <com.literallyjosh.mtg_counter.CounterWidget
+        android:id="@+id/player1_widget"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.3"
@@ -14,12 +16,14 @@
         android:keepScreenOn="true"/>
 
     <LinearLayout
+        android:id="@+id/p34_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.3"
         android:orientation="horizontal">
 
         <com.literallyjosh.mtg_counter.CounterWidget
+            android:id="@+id/player3_widget"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
@@ -28,6 +32,7 @@
             android:keepScreenOn="true"/>
 
         <com.literallyjosh.mtg_counter.CounterWidget
+            android:id="@+id/player4_widget"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
@@ -37,6 +42,7 @@
     </LinearLayout>
 
     <com.literallyjosh.mtg_counter.CounterWidget
+        android:id="@+id/player2_widget"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.3"
