@@ -21,6 +21,14 @@ public class CounterWidget extends FrameLayout {
         LayoutInflater inflater = LayoutInflater.from(context);
         inflater.inflate(R.layout.counter_widget, this);
 
+        FrameLayout life_frame = (FrameLayout)findViewById(R.id.life_frame);
+        life_frame.setOnLongClickListener(new OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                return false;
+            }
+        });
+
         Button minusButton = (Button)findViewById(R.id.minus_life_button);
         minusButton.setOnClickListener(new OnClickListener() {
             @Override
