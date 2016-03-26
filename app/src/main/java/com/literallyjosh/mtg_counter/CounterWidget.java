@@ -2,6 +2,7 @@ package com.literallyjosh.mtg_counter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +12,13 @@ import android.widget.TextView;
 
 public class CounterWidget extends FrameLayout {
     private int Life = 20;
+    public int Player;
 
     public CounterWidget(Context context) {
         super(context);
     }
+
+    private CountDownTimer AlertTimer;
 
     public CounterWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -56,6 +60,20 @@ public class CounterWidget extends FrameLayout {
 
         if(Life <= 0) {
             life_display.setTextColor(Color.RED);
+
+            if(AlertTimer != null) {
+                AlertTimer.cancel();
+            }
+
+            AlertTimer = new CountDownTimer(2000, 1000) {
+                public void onTick(long millisUntilFinished) {
+                }
+
+                public void onFinish() {
+                    MainActivity ma = (MainActivity)getContext();
+                    ma.CheckLifeTotals(Player);
+                }
+            }.start();
         }
         else {
             life_display.setTextColor(Color.WHITE);
