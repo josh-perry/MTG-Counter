@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
-    private int players = 4;
+    private int players = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

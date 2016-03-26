@@ -1,47 +1,59 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.literallyjosh.mtg_counter.MainActivity"
-    android:background="#000000"
-    android:orientation="vertical">
-
-    <com.literallyjosh.mtg_counter.CounterWidget
-        android:id="@+id/player1_widget"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3"
-        android:rotation="180"
-        android:gravity="center"
-        android:keepScreenOn="true"/>
+    tools:context="com.literallyjosh.mtg_counter.MainActivity">
 
     <LinearLayout
-        android:id="@+id/p34_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:orientation="vertical">
 
         <com.literallyjosh.mtg_counter.CounterWidget
-            android:id="@+id/player3_widget"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:rotation="90"/>
+            android:id="@+id/player1_widget"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            android:rotation="180"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:id="@+id/p34_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            android:orientation="horizontal">
+
+            <com.literallyjosh.mtg_counter.CounterWidget
+                android:id="@+id/player3_widget"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:rotation="90"/>
+
+            <com.literallyjosh.mtg_counter.CounterWidget
+                android:id="@+id/player4_widget"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:rotation="270"/>
+        </LinearLayout>
 
         <com.literallyjosh.mtg_counter.CounterWidget
-            android:id="@+id/player4_widget"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:rotation="270"/>
+            android:id="@+id/player2_widget"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            android:gravity="center"/>
     </LinearLayout>
 
-    <com.literallyjosh.mtg_counter.CounterWidget
-        android:id="@+id/player2_widget"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3"
-        android:gravity="center"
-        android:keepScreenOn="true"/>
-</LinearLayout>
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/roundedcorner"
+        android:src="@drawable/ic_navigation_arrow_drop_up"
+        android:contentDescription="Turn arrow"/>
+</FrameLayout>
