@@ -3,16 +3,38 @@ package com.literallyjosh.mtg_counter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
     private int players = 2;
+    private Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        ImageButton turnButton = (ImageButton)findViewById(R.id.turn_button);
+        turnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                game.ChangeTurns();
+
+                ImageButton turnButton = (ImageButton)findViewById(R.id.turn_button);
+
+                if(game.CurrentTurn.Player == 1) {
+                    turnButton.setImageResource(R.drawable.ic_navigation_arrow_drop_up);
+                }
+                else {
+                    turnButton.setImageResource(R.drawable.ic_navigation_arrow_drop_down);
+                }
+            }
+        });
+
+        game = new Game();
+        game.Players = players;
 
         adjustSizeForPlayers();
     }
