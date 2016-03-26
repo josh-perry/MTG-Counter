@@ -27,18 +27,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:gravity="center"
-            android:rotation="90"
-            android:keepScreenOn="true"/>
+            android:rotation="90"/>
 
         <com.literallyjosh.mtg_counter.CounterWidget
             android:id="@+id/player4_widget"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:gravity="center"
-            android:rotation="270"
-            android:keepScreenOn="true"/>
+            android:rotation="270"/>
     </LinearLayout>
 
     <com.literallyjosh.mtg_counter.CounterWidget
