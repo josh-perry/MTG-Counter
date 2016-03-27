@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:textColor="#ffffff"
-        android:textSize="50sp"
+        android:textSize="72sp"
         android:textStyle="bold"/>
 
     <Button
