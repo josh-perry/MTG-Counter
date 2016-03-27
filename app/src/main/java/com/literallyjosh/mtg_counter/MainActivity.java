@@ -17,7 +17,7 @@ import petrov.kristiyan.colorpicker.ColorPicker;
 public class MainActivity extends AppCompatActivity {
     private int players = 2;
     private Game game;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,16 +117,6 @@ public class MainActivity extends AppCompatActivity {
                     CounterWidget p2 = (CounterWidget) findViewById(R.id.player2_widget);
                     p2.SetBackground(color);
                 }
-            }
-        }).setNegativeButton("DEFAULT",new ColorPicker.OnButtonListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("DEFAULT", "default");
-            }
-        }).setPositiveButton("CANCEL", new ColorPicker.OnButtonListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("CANCEL","cancel");
             }
         }).setColors(Color.parseColor("#F44336"),
                      Color.parseColor("#2196F3"),
