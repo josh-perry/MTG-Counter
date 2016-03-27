@@ -104,5 +104,13 @@ public class CounterWidget extends FrameLayout {
     public void SetBackground(int c) {
         String col = String.format("#%06X", (0xFFFFFF & c));
         this.setBackgroundColor(Color.parseColor(col));
+
+        TextView life_display = (TextView)findViewById(R.id.life_display);
+        if(c == -1) {
+            life_display.setTextColor(Color.parseColor("#000000"));
+        }
+        else {
+            life_display.setTextColor(Color.parseColor("#ffffff"));
+        }
     }
 }

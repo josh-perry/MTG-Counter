@@ -10,17 +10,28 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+
 import petrov.kristiyan.colorpicker.ColorPicker;
 
 public class MainActivity extends AppCompatActivity {
     private int players = 2;
     private Game game;
 
+    private ArrayList<String> ColorList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        ColorList = new ArrayList<>();
+        ColorList.add("#F44336");
+        ColorList.add("#2196F3");
+        ColorList.add("#000000");
+        ColorList.add("#FFFFFF");
+        ColorList.add("#4CAF50");
 
         StartGame();
     }
@@ -148,6 +159,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("CANCEL","cancel");
             }
-        }).setDefaultColor(Color.parseColor("#f84c44")).setColumns(5).setRoundButton(true).show();
+        }).setColors(Color.parseColor("#F44336"),
+                     Color.parseColor("#2196F3"),
+                     Color.parseColor("#000000"),
+                     Color.parseColor("#FFFFFF"),
+                     Color.parseColor("#4CAF50"))
+          .setRoundButton(true)
+          .show();
     }
 }
