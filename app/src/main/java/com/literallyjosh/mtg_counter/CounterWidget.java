@@ -54,6 +54,11 @@ public class CounterWidget extends FrameLayout {
         UpdateLifeDisplay();
     }
 
+    public void SetLife(int life) {
+        Life = life;
+        UpdateLifeDisplay();
+    }
+
     private void UpdateLifeDisplay() {
         TextView life_display = (TextView)findViewById(R.id.life_display);
         life_display.setText(Integer.toString(Life));

@@ -18,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        StartGame();
+    }
+
+    private void StartGame() {
         ImageButton turnButton = (ImageButton)findViewById(R.id.turn_button);
         turnButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,9 +44,11 @@ public class MainActivity extends AppCompatActivity {
 
         CounterWidget p1 = (CounterWidget)findViewById(R.id.player1_widget);
         p1.Player = 1;
+        p1.SetLife(20);
 
         CounterWidget p2 = (CounterWidget)findViewById(R.id.player2_widget);
         p2.Player = 2;
+        p1.SetLife(20);
 
         adjustSizeForPlayers();
     }
@@ -71,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which){
                     case DialogInterface.BUTTON_POSITIVE:
-                        //Yes button clicked
+                        finish();
+                        startActivity(getIntent());
                         break;
 
                     case DialogInterface.BUTTON_NEGATIVE:
@@ -85,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setTitle("End Game");
         builder.setMessage(String.format("Player %s has fallen below 1 life!\nEnd game?", Player))
                 .setPositiveButton("Yes", dialogClickListener)
-                .setNegativeButton("No", dialogClickListener).show();
+                .setNegativeButton("No", dialogClickListener)
+                .show();
     }
 }
