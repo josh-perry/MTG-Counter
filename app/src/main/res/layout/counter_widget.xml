@@ -4,11 +4,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
     tools:context="com.literallyjosh.mtg_counter.CounterWidget"
     android:longClickable="true"
     android:id="@+id/life_frame">
-
     <TextView
         android:id="@+id/life_display"
         android:layout_width="match_parent"

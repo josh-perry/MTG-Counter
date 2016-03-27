@@ -2,11 +2,15 @@ package com.literallyjosh.mtg_counter;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+
+import petrov.kristiyan.colorpicker.ColorPicker;
 
 public class MainActivity extends AppCompatActivity {
     private int players = 2;
@@ -94,5 +98,56 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton("Yes", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener)
                 .show();
+    }
+
+    public void ShowColorPicker(final int player) {/*
+        ColorPicker colorPicker = new ColorPicker(MainActivity.this);
+        colorPicker.show();
+        colorPicker.setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
+            @Override
+            public void onChooseColor(int position, int color) {
+                if(player == 1) {
+                    try {
+                        CounterWidget p1 = (CounterWidget) findViewById(R.id.player1_widget);
+                        p1.SetBackground(color);
+                    }
+                    catch(Exception ex) {
+
+                    }
+                }
+                else {
+                    CounterWidget p2 = (CounterWidget)findViewById(R.id.player2_widget);
+                    String h = String.format("#%06X", (0xFFFFFF & color));
+                    p2.setBackgroundColor(Color.parseColor(h));
+                }
+            }
+        });*/
+
+        final ColorPicker colorPicker = new ColorPicker(MainActivity.this);
+        colorPicker.setFastChooser(new ColorPicker.OnFastChooseColorListener() {
+            @Override
+            public void setOnFastChooseColorListener(int position, int color) {
+                colorPicker.dismissDialog();
+
+                if(player == 1) {
+                    CounterWidget p1 = (CounterWidget) findViewById(R.id.player1_widget);
+                    p1.SetBackground(color);
+                }
+                else {
+                    CounterWidget p2 = (CounterWidget) findViewById(R.id.player2_widget);
+                    p2.SetBackground(color);
+                }
+            }
+        }).setNegativeButton("DEFAULT",new ColorPicker.OnButtonListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("DEFAULT", "default");
+            }
+        }).setPositiveButton("CANCEL", new ColorPicker.OnButtonListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("CANCEL","cancel");
+            }
+        }).setDefaultColor(Color.parseColor("#f84c44")).setColumns(5).setRoundButton(true).show();
     }
 }

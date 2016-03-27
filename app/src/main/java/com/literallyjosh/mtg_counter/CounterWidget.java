@@ -1,5 +1,6 @@
 package com.literallyjosh.mtg_counter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.CountDownTimer;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import petrov.kristiyan.colorpicker.ColorPicker;
 
 public class CounterWidget extends FrameLayout {
     private int Life = 20;
@@ -25,10 +28,13 @@ public class CounterWidget extends FrameLayout {
         LayoutInflater inflater = LayoutInflater.from(context);
         inflater.inflate(R.layout.counter_widget, this);
 
+        setBackgroundColor(Color.parseColor("#0099cc"));
+
         FrameLayout life_frame = (FrameLayout)findViewById(R.id.life_frame);
         life_frame.setOnLongClickListener(new OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                ShowColorPicker();
                 return false;
             }
         });
@@ -52,6 +58,16 @@ public class CounterWidget extends FrameLayout {
         });
 
         UpdateLifeDisplay();
+    }
+
+    private void ShowColorPicker() {
+        try {
+            MainActivity ma = (MainActivity) getContext();
+            ma.ShowColorPicker(Player);
+        }
+        catch(Exception ex) {
+
+        }
     }
 
     public void SetLife(int life) {
@@ -83,5 +99,10 @@ public class CounterWidget extends FrameLayout {
         else {
             life_display.setTextColor(Color.WHITE);
         }
+    }
+
+    public void SetBackground(int c) {
+        String col = String.format("#%06X", (0xFFFFFF & c));
+        this.setBackgroundColor(Color.parseColor(col));
     }
 }
