@@ -17,21 +17,12 @@ import petrov.kristiyan.colorpicker.ColorPicker;
 public class MainActivity extends AppCompatActivity {
     private int players = 2;
     private Game game;
-
-    private ArrayList<String> ColorList;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-
-        ColorList = new ArrayList<>();
-        ColorList.add("#F44336");
-        ColorList.add("#2196F3");
-        ColorList.add("#000000");
-        ColorList.add("#FFFFFF");
-        ColorList.add("#4CAF50");
 
         StartGame();
     }
@@ -111,29 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    public void ShowColorPicker(final int player) {/*
-        ColorPicker colorPicker = new ColorPicker(MainActivity.this);
-        colorPicker.show();
-        colorPicker.setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
-            @Override
-            public void onChooseColor(int position, int color) {
-                if(player == 1) {
-                    try {
-                        CounterWidget p1 = (CounterWidget) findViewById(R.id.player1_widget);
-                        p1.SetBackground(color);
-                    }
-                    catch(Exception ex) {
-
-                    }
-                }
-                else {
-                    CounterWidget p2 = (CounterWidget)findViewById(R.id.player2_widget);
-                    String h = String.format("#%06X", (0xFFFFFF & color));
-                    p2.setBackgroundColor(Color.parseColor(h));
-                }
-            }
-        });*/
-
+    public void ShowColorPicker(final int player) {
         final ColorPicker colorPicker = new ColorPicker(MainActivity.this);
         colorPicker.setFastChooser(new ColorPicker.OnFastChooseColorListener() {
             @Override
@@ -165,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
                      Color.parseColor("#FFFFFF"),
                      Color.parseColor("#4CAF50"))
           .setRoundButton(true)
+          .setTitle("Select background colour")
           .show();
     }
 }
