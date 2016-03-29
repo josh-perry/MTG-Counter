@@ -16,6 +16,7 @@ import petrov.kristiyan.colorpicker.ColorPicker;
 public class CounterWidget extends FrameLayout {
     private int Life = 20;
     public int Player;
+    private boolean InverseTextColour;
 
     public CounterWidget(Context context) {
         super(context);
@@ -27,6 +28,8 @@ public class CounterWidget extends FrameLayout {
         super(context, attrs);
         LayoutInflater inflater = LayoutInflater.from(context);
         inflater.inflate(R.layout.counter_widget, this);
+
+        InverseTextColour = false;
 
         setBackgroundColor(Color.parseColor("#0099cc"));
 
@@ -80,8 +83,6 @@ public class CounterWidget extends FrameLayout {
         life_display.setText(Integer.toString(Life));
 
         if(Life <= 0) {
-            life_display.setTextColor(Color.RED);
-
             if(AlertTimer != null) {
                 AlertTimer.cancel();
             }
@@ -96,9 +97,8 @@ public class CounterWidget extends FrameLayout {
                 }
             }.start();
         }
-        else {
-            life_display.setTextColor(Color.WHITE);
-        }
+
+        UpdateTextColour();
     }
 
     public void SetBackground(int c) {
@@ -107,10 +107,34 @@ public class CounterWidget extends FrameLayout {
 
         TextView life_display = (TextView)findViewById(R.id.life_display);
         if(c == -1) {
-            life_display.setTextColor(Color.parseColor("#000000"));
+            InverseTextColour = true;
         }
         else {
-            life_display.setTextColor(Color.parseColor("#ffffff"));
+            InverseTextColour = false;
+        }
+
+        UpdateTextColour();
+    }
+
+    private void UpdateTextColour() {
+        TextView life_display = (TextView)findViewById(R.id.life_display);
+
+        if(InverseTextColour) {
+            if(Life >= 1) {
+                life_display.setTextColor(Color.BLACK);
+            }
+            else {
+                life_display.setTextColor(Color.RED);
+            }
+
+            return;
+        }
+
+        if(Life >= 1) {
+            life_display.setTextColor(Color.WHITE);
+        }
+        else {
+            life_display.setTextColor(Color.RED);
         }
     }
 }
