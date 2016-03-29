@@ -92,6 +92,11 @@ public class CounterWidget extends FrameLayout {
                 }
 
                 public void onFinish() {
+                    if(Life > 0) {
+                        // Fix for https://github.com/josh-perry/MTG-Counter/issues/6
+                        return;
+                    }
+
                     MainActivity ma = (MainActivity)getContext();
                     ma.CheckLifeTotals(Player);
                 }
