@@ -5,12 +5,9 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-
-import java.util.ArrayList;
 
 import petrov.kristiyan.colorpicker.ColorPicker;
 
@@ -36,12 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
                 ImageButton turnButton = (ImageButton)findViewById(R.id.turn_button);
 
-                if(game.CurrentTurn.Player == 1) {
-                    turnButton.setImageResource(R.drawable.ic_navigation_arrow_drop_up);
-                }
-                else {
-                    turnButton.setImageResource(R.drawable.ic_navigation_arrow_drop_down);
-                }
+                UpdateTurnArrow();
             }
         });
 
@@ -54,12 +46,24 @@ public class MainActivity extends AppCompatActivity {
 
         CounterWidget p2 = (CounterWidget)findViewById(R.id.player2_widget);
         p2.Player = 2;
-        p1.SetLife(20);
+        p2.SetLife(20);
 
-        adjustSizeForPlayers();
+        AdjustSizeForPlayers();
+        UpdateTurnArrow();
     }
 
-    private void adjustSizeForPlayers() {
+    private void UpdateTurnArrow() {
+        ImageButton turnButton = (ImageButton)findViewById(R.id.turn_button);
+
+        if(game.CurrentTurn.Player == 1) {
+            turnButton.setImageResource(R.drawable.ic_navigation_arrow_drop_up);
+        }
+        else {
+            turnButton.setImageResource(R.drawable.ic_navigation_arrow_drop_down);
+        }
+    }
+
+    private void AdjustSizeForPlayers() {
         CounterWidget p3 = (CounterWidget)findViewById(R.id.player3_widget);
         CounterWidget p4 = (CounterWidget)findViewById(R.id.player4_widget);
 
@@ -83,8 +87,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which){
                     case DialogInterface.BUTTON_POSITIVE:
-                        finish();
-                        startActivity(getIntent());
+                        // Fix for https://github.com/josh-perry/MTG-Counter/issues/7
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                StartGame();
+                            }
+                        });
+
                         break;
 
                     case DialogInterface.BUTTON_NEGATIVE:
