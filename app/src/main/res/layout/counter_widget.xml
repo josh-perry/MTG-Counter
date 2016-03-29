@@ -23,6 +23,7 @@
         android:background="@drawable/roundedcorner"
         android:text="-"
         android:layout_gravity="left|center_vertical"
+        android:layout_margin="25dp"
         android:onClick="minusLifeButtonClicked"/>
 
     <Button
@@ -32,5 +33,6 @@
         android:background="@drawable/roundedcorner"
         android:text="+"
         android:layout_gravity="right|center_vertical"
+        android:layout_margin="25dp"
         android:onClick="addLifeButtonClicked"/>
 </FrameLayout>
