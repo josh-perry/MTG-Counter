@@ -25,21 +25,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void StartGame() {
+        // Set up button click listeners
         ImageButton turnButton = (ImageButton)findViewById(R.id.turn_button);
         turnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 game.ChangeTurns();
 
-                ImageButton turnButton = (ImageButton)findViewById(R.id.turn_button);
-
                 UpdateTurnArrow();
             }
         });
 
+        // Reset the game
         game = new Game();
         game.Players = players;
 
+        // Set up players
         CounterWidget p1 = (CounterWidget)findViewById(R.id.player1_widget);
         p1.Player = 1;
         p1.SetLife(20);
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         p2.Player = 2;
         p2.SetLife(20);
 
+        // Other UI setup
         AdjustSizeForPlayers();
         UpdateTurnArrow();
     }
@@ -93,16 +95,15 @@ public class MainActivity extends AppCompatActivity {
                                 StartGame();
                             }
                         });
-
                         break;
 
                     case DialogInterface.BUTTON_NEGATIVE:
-                        //No button clicked
                         break;
                 }
             }
         };
 
+        // Show alert to reset the game
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("End Game");
         builder.setMessage(String.format("Player %s has fallen below 1 life!\nEnd game?", Player))
@@ -112,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ShowColorPicker(final int player) {
+        // TODO: This should be a lot cleaner
+        // Maybe stop using this colorpicker library and make a sweet MTG themed one
         final ColorPicker colorPicker = new ColorPicker(MainActivity.this);
         colorPicker.setFastChooser(new ColorPicker.OnFastChooseColorListener() {
             @Override
