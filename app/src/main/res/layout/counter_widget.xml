@@ -20,22 +20,22 @@
         android:shadowDy="0.0"
         android:shadowRadius="25"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/minus_life_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/roundedcorner"
-        android:text="-"
+        android:src="@drawable/ic_content_remove"
         android:layout_gravity="left|center_vertical"
         android:layout_margin="25dp"
         android:onClick="minusLifeButtonClicked"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/add_life_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/roundedcorner"
-        android:text="+"
+        android:src="@drawable/ic_content_add"
         android:layout_gravity="right|center_vertical"
         android:layout_margin="25dp"
         android:onClick="addLifeButtonClicked"/>

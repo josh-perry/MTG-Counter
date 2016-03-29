@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import petrov.kristiyan.colorpicker.ColorPicker;
@@ -42,7 +43,7 @@ public class CounterWidget extends FrameLayout {
             }
         });
 
-        Button minusButton = (Button)findViewById(R.id.minus_life_button);
+        ImageButton minusButton = (ImageButton)findViewById(R.id.minus_life_button);
         minusButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +52,7 @@ public class CounterWidget extends FrameLayout {
             }
         });
 
-        Button addButton = (Button)findViewById(R.id.add_life_button);
+        ImageButton addButton = (ImageButton)findViewById(R.id.add_life_button);
         addButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
