@@ -14,7 +14,11 @@
         android:gravity="center"
         android:textColor="#ffffff"
         android:textSize="72sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:shadowColor="#787878"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="25"/>
 
     <Button
         android:id="@+id/minus_life_button"
