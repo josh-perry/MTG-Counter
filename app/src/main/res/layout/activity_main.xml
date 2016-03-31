@@ -57,4 +57,18 @@
         android:background="@drawable/roundedcorner"
         android:src="@drawable/ic_navigation_arrow_drop_up"
         android:contentDescription="Turn arrow"/>
+
+    <TextView
+        android:id="@+id/timer_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|left"
+        android:text="BOOB"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:shadowColor="#787878"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="25"
+        android:rotation="270"/>
 </FrameLayout>

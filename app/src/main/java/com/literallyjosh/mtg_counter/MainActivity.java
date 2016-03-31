@@ -4,10 +4,15 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import petrov.kristiyan.colorpicker.ColorPicker;
 
@@ -52,6 +57,35 @@ public class MainActivity extends AppCompatActivity {
         // Other UI setup
         AdjustSizeForPlayers();
         UpdateTurnArrow();
+
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                TextView timer_textview = (TextView) findViewById(R.id.timer_textview);
+
+                                int totalSecs = (int) (System.currentTimeMillis() - game.StartTime) / 1000;
+                                int hours = totalSecs / 3600;
+                                int minutes = (totalSecs % 3600) / 60;
+                                int seconds = totalSecs % 60;
+
+                                String timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+
+                                timer_textview.setText(timeString);
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+
+        t.start();
     }
 
     private void UpdateTurnArrow() {
